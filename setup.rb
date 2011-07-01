@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'flickraw'
+require 'pit'
 
 API_KEY = 'c5ec21924fb006939eb960ff444be1bc'
 SECRET  = '5a1ea4c1841ae7e6'
@@ -18,6 +19,7 @@ begin
   auth = flickr.auth.getToken :frob => frob
   login = flickr.test.login
   puts "You are now authenticated as #{login.username} with token #{auth.token}"
+  Pit.set('gyazo_to_flickr', :data => {'token' => auth.token})
 rescue FlickRaw::FailedResponse => e
   puts "Authentication failed : #{e.msg}"
 end
