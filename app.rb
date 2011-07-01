@@ -2,11 +2,10 @@ require 'rack'
 require 'flickraw'
 require 'pit'
 
-API_KEY='c5ec21924fb006939eb960ff444be1bc'
-SHARED_SECRET='5a1ea4c1841ae7e6'
-
 $config = Pit.get('gyazo_to_flickr', :require => {
-  'token' => 'your token'
+  'key'    => 'your app key',
+  'secret' => 'your app secret',
+  'token'  => 'your token'
 })
 
 class Upload
@@ -26,15 +25,17 @@ class Upload
     File.open(write_path, 'w'){|f| f.write imagedata}
 
     url = flickr_upload write_path
-    puts url
+
+    File.delete write_path
+
     res.write url
     res.finish
   end
 
   private
   def flickr_upload(file_path)
-    FlickRaw.api_key = API_KEY
-    FlickRaw.shared_secret = SHARED_SECRET
+    FlickRaw.api_key = $config['key']
+    FlickRaw.shared_secret = $config['secret']
 
     flickr.auth.checkToken :auth_token => $config['token']
     flickr.test.login
