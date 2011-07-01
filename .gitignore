@@ -1,1 +1,7 @@
-test.png
+Gemfile.lock
+.rvmrc
+.bundle
+vendor/bundle
+*.swp
+*~
+
