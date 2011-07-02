@@ -1,0 +1,23 @@
+!!! XML
+!!!
+%html{html_attrs('ja')}
+  %head
+    %meta{ 'http-equiv' => 'content', :content => 'text/html; charset=utf-8'}
+    %title Complete - GyazoToFlickr
+  %body
+    %h1 登録が完了しました
+    %h2 Gyazo クライアントの設定方法
+    %h3 Gyazowin+ の場合
+    %p gyazowin+.ini を以下のように書き換えることで利用可能になります。
+
+    %ul
+      %li upload_server=#{@host}
+      %li upload_path=#{@hash}
+
+    %h3 Gyazo.app for OSX の場合
+    %p gyazo.app/Contents/Resources/script を以下のように書き換えることで利用可能になります。
+
+    %ul
+      %li HOST = '#{@host}'
+      %li CGI = '/#{@hash}'
+

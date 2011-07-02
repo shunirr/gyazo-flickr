@@ -1,0 +1,4 @@
+app:
+  key: YOUR_APP_KEY
+  secret: YOUR_APP_SECRET
+host: YOUR_GYAZO_TO_FLICKR_HOST

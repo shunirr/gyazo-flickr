@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
 gem "flickraw"
-gem "rack"
+gem "sinatra"
 gem "pit"
+gem "haml"
